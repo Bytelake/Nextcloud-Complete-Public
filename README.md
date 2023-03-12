@@ -103,4 +103,6 @@ Hit save, let if finish, and you're done! sort of...
 Your nextcloud site should be accessible from your domain, with a valid SSL certificate from LetsEncrypt.  
 However, there's more work to do! Yay!  
 All you need to do now is install the antivirus app on nextcloud, then in Administration Settings > Security,  
-Set the antivirus to the ClamAV Daemon, host to clamav, and port to 3310. Hit save, and it's done. (ClamAV takes a minute or two to start up, so make sure it's fully started if it errors.)  
+Set the antivirus to the ClamAV Daemon, host to clamav, and port to 3310. Hit save, and it's done. (ClamAV takes a minute or two to start up, so make sure it's fully started if it errors.)   
+
+If you've survived all that, you finished! Congratulations!
