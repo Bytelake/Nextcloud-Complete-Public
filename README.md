@@ -99,9 +99,18 @@ That's done. Now save and move on to default.conf:
 ````
 nano /nextcloud/config/nginx/site-confs/default.conf
 ````
-Following the instructions in the Nginx Config Changes.md, modify a few lines then save.  
+Modify these lines:
+````
+client_max_body_size 512M;
+client_body_timeout 300s;  
+````
+So that they look like this:
+````
+client_max_body_size 64G;  
+client_body_timeot 3600s;  
+````
 
-Now we move onto Nginx Proxy Manager.  
+Now we move onto Nginx Proxy Manager.  (Yay more nginx!)  
 Go to http://YOUR_IP_ADDRESS:81  
 ***The default login is Username: admin@example.com Password: changeme*** 
 Set a new email.  
