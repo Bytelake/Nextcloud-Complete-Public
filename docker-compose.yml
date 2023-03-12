@@ -1,0 +1,109 @@
+---
+version: "2.1"
+services:
+  nextcloud:
+    image: linuxserver/nextcloud:latest
+    container_name: nextcloud
+    hostname: nextcloud
+    networks:
+      - nextcloud-net
+      - main-net
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /nextcloud/config:/config
+      - /media/data-drive/nextcloud-data:/data
+    ports:
+      - 4043:443
+    restart: unless-stopped
+    depends_on:
+      - nc-db
+      
+  nc-db:
+    image: postgres:10.12-alpine
+    hostname: postgres
+    restart: unless-stopped
+    container_name: nextcloud-db
+    networks:
+      - nextcloud-net
+    volumes:
+      - /nextcloud/postgres/postgres-data:/var/lib/postgresql/data
+      - /nextclod/postgres/postgres:/var/lib/postgresql
+    environment:
+      - POSTGRES_DB=nextcloud_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD= <INSERT_PASSWORD>
+      - PGDATA = "/var/lib/postgresql/data"
+      
+  npm:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    container_name: npm
+    hostname: nginx-pm
+    networks:
+      - main-net
+      - npm-net
+    ports:
+      - '80:80' # Public HTTP Port
+      - '443:443' # Public HTTPS Port
+      - '81:81' # Admin Web Port
+    environment:
+      DB_MYSQL_HOST: "npm-db"
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_PASSWORD: <INSERT_PASSWORD>
+      DB_MYSQL_NAME: "npm"
+      # Uncomment this if IPv6 is not enabled on your host
+      #DISABLE_IPV6: 'true'
+    volumes:
+      - /nextcloud/npm/data:/data
+      - /nextcloud/npm/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - npm-db
+
+  npm-db:
+    image: 'jc21/mariadb-aria:latest'
+    restart: unless-stopped
+    hostname: npm-db
+    container_name: npm-db
+    networks:
+      - npm-net
+    environment:
+      MYSQL_ROOT_PASSWORD: 'npm'
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: <INSERT_PASSWORD> #!From Above!
+    volumes:
+      - /nextcloud/npm/npm-db/data/mysql:/var/lib/mysql
+      
+  redis:
+    image: redis:alpine
+    container_name: redis
+    volumes:
+      - /nextcloud/redis/data:/data
+    command: redis-server --requirepass <INSERT_PASSWORD>
+    networks:
+      - main-net
+    restart: unless-stopped
+    
+  clamav:
+    image: clamav/clamav:stable
+    container_name: clamav
+    hostname: clamav
+    networks:
+      - nextcloud-net
+    volumes:
+      # Socket
+      - /var/run/clamav/:/var/run/clamav/
+      - /var/docker/clamav/virus_db/:/var/lib/clamav/
+    restart: unless-stopped
+
+    
+networks:
+  nextcloud-net:
+    driver: bridge
+  npm-net:
+    driver: bridge
+  main-net:
+    driver: bridge
