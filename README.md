@@ -34,7 +34,8 @@ sudo apt install docker.io
 sudo apt install docker-compose
 ```
 
-***Now make a copy of the docker-compose.yml and change all the <INSERT_PASSWORD> to secure passwords.***
+***Now make a copy of the docker-compose.yml and change all the <INSERT_PASSWORD> to secure passwords.***  
+**There are 3 passwords needed. One for Postgres, one for Nginx Proxy Manager and it's DB, and Redis.**
 
 After that, you should be ready to deploy the stack. I personally used portainer for ease of use. To do that, just follow the instructions located one portainers website to install it.
 
