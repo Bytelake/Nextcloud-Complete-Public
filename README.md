@@ -87,7 +87,14 @@ That's all in config.php. Now we'll move on to php-local.ini
 ````
 nano /nextcloud/config/php/php-local.ini
 ````
-Replace the contents of that file with the corresponding file here.  
+Add in:
+````
+memory_limit=2048M
+post_max_size=64G
+upload_max_filesize=64G
+max_execution_time=3600
+max_input_time=600
+````
 That's done. Now save and move on to default.conf:
 ````
 nano /nextcloud/config/nginx/site-confs/default.conf
