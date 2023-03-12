@@ -33,6 +33,9 @@ sudo apt upgrade #This will take a little while
 sudo apt install docker.io
 sudo apt install docker-compose
 ```
+
+***Now make a copy of the docker-compose.yml and change all the <INSERT_PASSWORD> to secure passwords.***
+
 After that, you should be ready to deploy the stack. I personally used portainer for ease of use. To do that, just follow the instructions located one portainers website to install it.
 
 ## Deploying the Stack  
@@ -54,6 +57,12 @@ docker-compose up
 - Hit Deploy  
   
 Assuming all containers successfully deploy, you've made a lot of progress!  
+
+### Nextcloud Initial Setup
+Now we need to setup Nextcloud so it generates the config.php we'll need momentarily  
+Go to: https://server_ip:4043  
+Fill out all the fields. Select PostgreSQL as the database. It's details can be found in the docker-compose.yml (It's environment variables)  
+Hit install and continue till you hit the dashboard or files section. Then you can close the tab or keep it open. Up to you. We will come back to it later.  
 
 ## Config Changes
 
