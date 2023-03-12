@@ -2,7 +2,7 @@
 
 This should generally go over the steps and configuration to get a nice functioning nextcloud server. I've installed it on top of OpenMediaVault and Portainer. Neither are necessary and it works on Ubuntu, Debian, and Alpine as well, but commands have to be adapted, more significantly for Alpine, but nonetheless, adapted.
 
-## Step by step or something
+# Tutorial
 The goal of this project is to make a cloud storage server with document editing, presentation editing, etc. in a box. Like Google Workspace to some extent. Currently Onlyoffice refuses to function alongside nextcloud so it's still a work in progress. But the entire cloud storage side of things is functional.
 
 To make server management easier, I'm using OpenMediaVault, which is based on Debian 11 as of the time of writing, which makes it pretty easy to work with. With OpenMediaVault I get a nice webui to check on the server with. 
