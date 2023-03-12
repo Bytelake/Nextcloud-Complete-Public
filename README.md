@@ -62,8 +62,19 @@ You need to go to Nextcloud's config.php file
 ````
 nano /nextcloud/config/nextcloud/www/config/config.php
 ````
-Then at the second line, below the "$CONFIG = array (", paste in the contents of the redis.md file. Instructions are also provided inside it.
-Be sure to change the password to whatever you set in the docker-compose.yml
+Then at the second line, below the "$CONFIG = array (", paste in:
+````
+  'memcache.local' => '\OC\Memcache\APCu',
+  'memcache.distributed' => '\OC\Memcache\Redis',
+  'redis' => [
+       'host'     => 'redis',
+       'port'     => 6379,
+       'password' => '<REDIS PASSWORD>',
+       'timeout'  => 1.5,
+  ],
+  'memcache.locking' => '\OC\Memcache\Redis',
+  ````
+***Be sure to change the password to whatever you set in the docker-compose.yml***
   
 Then scroll down some until you find:
 ````
