@@ -16,6 +16,7 @@ You have 3 options
 
 So pick a method, and set that up once your OS is functioning. Be warned, for option 3, wireguard might screw up the internet connection for the server, causing package installs to fail and whatnot so make sure it's down until just before configuring nginx proxy manager.  
 
+## Setup
 I'll be setting up a system with a dedicated HDD for nextcloud data and then an SSD for the OS and services. I used OpenMediaVault's webUI to format and mount the HDD already, which is quite easy. So then we'll begin by symlinking the HDD to the path: /media/data-drive/  
   
 ```
