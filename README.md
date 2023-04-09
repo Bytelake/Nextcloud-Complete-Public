@@ -72,9 +72,8 @@ You need to go to Nextcloud's config.php file
 ````
 nano /nextcloud/config/www/nextcloud/config/config.php
 ````
-Then at the second line, below the "$CONFIG = array (", paste in:
+Then at the third line, below the "'memcache.local' => '\\OC\\Memcache\\APCu',", paste in:
 ````
-  'memcache.local' => '\OC\Memcache\APCu',
   'memcache.distributed' => '\OC\Memcache\Redis',
   'redis' => [
        'host'     => 'redis',
