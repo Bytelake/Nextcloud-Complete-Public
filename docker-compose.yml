@@ -1,5 +1,5 @@
 ---
-version: "2.1"
+version: "3.9"
 services:
   nextcloud:
     image: linuxserver/nextcloud:latest
@@ -21,7 +21,7 @@ services:
       - nc-db
       
   nc-db:
-    image: postgres:10.12-alpine
+    image: postgres:15.2-alpine
     hostname: postgres
     restart: unless-stopped
     container_name: nextcloud-db
