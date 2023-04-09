@@ -33,8 +33,8 @@ services:
     environment:
       - POSTGRES_DB=nextcloud_db
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD= <INSERT_PASSWORD>
-      - PGDATA= "/var/lib/postgresql/data"
+      - POSTGRES_PASSWORD=<INSERT_PASSWORD>
+      - PGDATA=/var/lib/postgresql/data
       
   npm:
     image: 'jc21/nginx-proxy-manager:latest'
