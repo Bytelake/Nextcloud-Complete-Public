@@ -70,7 +70,7 @@ Hit install and continue till you hit the dashboard or files section. Then you c
 Now we need to do a bunch of config changes so everything plays nice and functions smoothly. We'll start with Redis and adding the custom domain we want to use 
 You need to go to Nextcloud's config.php file
 ````
-nano /nextcloud/config/nextcloud/www/config/config.php
+nano /nextcloud/config/www/nextcloud/config/config.php
 ````
 Then at the second line, below the "$CONFIG = array (", paste in:
 ````
