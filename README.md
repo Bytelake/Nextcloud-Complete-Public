@@ -16,14 +16,9 @@ You have 3 options
 So pick a method, and set that up once your OS is functioning. Be warned, for option 3, wireguard might screw up the internet connection for the server, causing package installs to fail and whatnot so make sure it's down until just before configuring nginx proxy manager.  
 
 ## Setup
-I'll be setting up a system with a dedicated HDD for nextcloud data and then an SSD for the OS and services. I used OpenMediaVault's webUI to format and mount the HDD already, which is quite easy. So then we'll begin by symlinking the HDD to the path: /media/data-drive/  
-  
-```
-cd /srv
-ls # There will be a really long name like "dev-disk-by-uuid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX" - that's the HDD
-ln -s /srv/(drive-name) /media/data-drive # Symlink the data drive to make referencing it easier. Saves time
-mkdir /nextcloud/ # Now we make the directory where all of nextcloud and it's accompanying services will go
-```
+I'll be setting up a system with a dedicated HDD for nextcloud data and then an SSD for the OS and services. The HDD get's symlinked to /media/drive-name 
+ 
+Edit the docker-compose.yml to have the right paths.
   
 Then we'll update the system, and then install docker and docker compose. This'll take a few minutes.  
 ```
