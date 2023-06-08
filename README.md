@@ -22,10 +22,8 @@ Edit the docker-compose.yml to have the right paths.
   
 Then we'll update the system, and then install docker and docker compose. This'll take a few minutes.  
 ```
-sudo apt update
-sudo apt upgrade #This will take a little while
-sudo apt install docker.io
-sudo apt install docker-compose
+sudo apt update && apt upgrade
+sudo apt install docker.io docker-compose
 ```
 
 ***Now make a copy of the docker-compose.yml and change all the <INSERT_PASSWORD> to secure passwords.***  
