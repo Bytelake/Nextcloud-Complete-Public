@@ -137,3 +137,31 @@ Set the antivirus to the ClamAV Daemon, host to clamav, and port to 3310. Hit sa
 Tip! - If you use the wireguard tunnel, set the MTU to 1420 for optimal performance
 
 If you've survived all that, you finished! Congratulations!
+
+
+# Truenas Core
+All of these config changes can be applied to the TrueNAS Core Nextcloud plugin, but it's trickier.  
+
+For PHP,
+```
+nano /usr/local/etc/php/php.truenas.ini
+```
+Then modify the following lines and/or add them:
+````
+memory_limit=2048M
+post_max_size=64G
+upload_max_filesize=64G
+max_execution_time=3600
+max_input_time=600
+````
+For Nginx:
+```
+nano /usr/local/etc/nginx/nginx.conf
+```
+And modify the following lines:
+```
+client_max_body_size 64G;
+client_body_timeout 30m;
+proxy_read_timeout 3600;
+```
+That should be all that's necessary. Redis is already integrated and ClamAV is nowhere to be found so no need to worry about those.
