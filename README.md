@@ -164,4 +164,12 @@ client_max_body_size 64G;
 client_body_timeout 30m;
 proxy_read_timeout 3600;
 ```
+then:
+```
+nano /usr/local/etc/nginx/conf.d/nextcloud.inc
+```
+And modify the following lines:
+```
+client_max_body_size 64G;
+```
 That should be all that's necessary. Redis is already integrated and ClamAV is nowhere to be found so no need to worry about those.
