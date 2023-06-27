@@ -29,7 +29,7 @@ services:
       - nextcloud-net
     volumes:
       - /nextcloud/postgres/postgres-data:/var/lib/postgresql/data
-      - /nextclod/postgres/postgres:/var/lib/postgresql
+      - /nextcloud/postgres/postgres:/var/lib/postgresql
     environment:
       - POSTGRES_DB=nextcloud_db
       - POSTGRES_USER=postgres
